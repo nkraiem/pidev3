@@ -1,0 +1,21 @@
+{% extends 'base-back.html.twig' %}
+
+
+{% block body %}
+<form  action="{{  path ('ajoutequipes')}}" method="post">
+    <label for="nome">nom</label>
+    <input type="text" required id="nom" name="nom"><br>
+    <label for="nbrv">nbr vic</label>
+    <input type="text" required id="nbrvic" name="nbrvic"><br>
+    <label for="nbrp">nbr perd</label>
+    <input type="text" id="nbrper" required name="nbrper"><br>
+    <label for="nbrn">nbr null</label>
+    <input type="text" id="nbrnull" required name="nbrnull"><br>
+    <input type="submit" class="btn-success" value="submit">&nbsp;<a href="equipes"><button class="btn-primary"  type="button"> Retour</button></a><br><br>
+
+
+
+</form>
+
+
+{% endblock %}

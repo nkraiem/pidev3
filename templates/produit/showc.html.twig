@@ -1,0 +1,57 @@
+{% extends 'base-front.html.twig' %}
+{% block title %}Produits{% endblock %}
+
+{% block body %}
+
+
+    <h1>Les produits</h1>
+
+    <nav class="card-body" >
+
+        {% for produit in produits %}
+            <div class="card border-dark bg-secondary mb-3" style="max-width: 21rem;">
+
+                <div class="card-body pr-2">
+<img src ="{{ asset('uploads/images/' ~ produit.image) }}"
+                             alt =""  width="100" height="100">
+                    <div class="d-flex flex-column flex-lg-row">
+                        <h4 style="color: whitesmoke"> {{ produit.nom }}
+                        :
+                        {{ produit.prix }}
+                        Dinar
+                           
+                        </h4><br>
+<hr>
+                    <a href="{{ path('cart_add',{'id': produit.id}) }}" class="btn btn-success float-right">
+
+                        Ajouter
+                    </a>
+                    <a href="/commande/new" class="btn btn-primary">buy</a>
+
+                    </div>
+
+
+                </div>
+                        {% endfor %}
+    </nav>
+
+            <div class="mt-5">
+                {{ knp_pagination_render(produits, 'pagination.html.twig') }}
+            </div>
+          
+    <script>
+        var botmanWidget = {
+            frameEndpoint: '{{ path("chatframe") }}',
+            chatServer: '{{ path("message") }}',
+            introMessage: 'welcome to white Rose site',
+            title: 'My Chatbot',
+            mainColor: '#456765',
+            bubbleBackground: '#FF0000',
+            aboutText: ''
+        };
+    </script>
+    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+
+    </nav>
+
+{% endblock %}

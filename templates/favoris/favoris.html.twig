@@ -1,0 +1,56 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Votre Liste Favoris{% endblock %}
+
+{% block body %}
+    <section class="bg-light p-3">
+        <h1>Votre Liste Favoris</h1>
+    </section>
+    <a class="nav-link scrollto" href={{ path('fupcoming') }}>Retour</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>DateMatch</th>
+            <th>Equipe A</th>
+            <th>Equipe B</th>
+            <th>RefMatch</th>
+            <th>ScoreA</th>
+            <th>ScoreB</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for element in dataFavoris %}
+            <tr>
+
+                <td>{{ element.match.id }}</td>
+                <td>{{ element.match.dateMatch|date('Y-m-d H:i:s') }}</td>
+                <td>{{ element.match.equipe1.nom }}</td>
+                <td>{{ element.match.equipe2.nom }}</td>
+                <td>{{ element.match.refMatch }}</td>
+                <td>{{ element.match.scoreA }}</td>
+                <td>{{ element.match.scoreB }}</td>
+               <td>
+                <a href="{{path("supp", {id: element.match.id})}}" class="btn btn-danger">
+                   Supprimer <i class=""></i>
+                </a>
+               </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5" class="text-center">Votre favoris est vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="3">Total</td>
+            <td>
+
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+
+{% endblock %}

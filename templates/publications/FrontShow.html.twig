@@ -1,0 +1,157 @@
+{% extends 'base-front.html.twig' %}
+{% block body %}
+<style>
+    .btn {
+  box-shadow: 1px 1px 0 rgba(255,255,255,0.5) inset;
+  border-radius: 3px;
+  border: 1px solid;
+  display: inline-block;
+  height: 18px;
+  line-height: 18px;
+  padding: 0 8px;
+  position: relative;
+
+  font-size: 12px;
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+/*
+ * Counter button style
+ */
+.btn-counter { margin-right: 39px; }
+.btn-counter:after,
+.btn-counter:hover:after { text-shadow: none; }
+.btn-counter:after {
+  border-radius: 3px;
+  border: 1px solid #d3d3d3;
+  background-color: #eee;
+  padding: 0 8px;
+  color: #777;
+  content: attr(data-count);
+  left: 100%;
+  margin-left: 8px;
+  margin-right: -13px;
+  position: absolute;
+  top: -1px;
+}
+.btn-counter:before {
+  transform: rotate(45deg);
+  filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476, sizingMethod='auto expand');
+
+  background-color: #eee;
+  border: 1px solid #d3d3d3;
+  border-right: 0;
+  border-top: 0;
+  content: '';
+  position: absolute;
+  right: -13px;
+  top: 5px;
+  height: 6px;
+  width: 6px;
+  z-index: 1;
+  zoom: 1;
+}
+/*
+ * Custom styles
+ */
+.btn {
+  background-color: #dbdbdb;
+  border-color: #bbb;
+  color: #666;
+}
+.btn:hover,
+.btn.active {
+  text-shadow: 0 1px 0 #b12f27;
+  background-color: #f64136;
+  border-color: #b12f27;
+}
+.btn:active { box-shadow: 0 0 5px 3px rgba(0,0,0,0.2) inset; }
+.btn span { color: #f64136; }
+.btn:hover, .btn:hover span,
+.btn.active, .btn.active span { color: #eeeeee; }
+.btn:active span {
+  color: #b12f27;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+}
+</style>
+<br><br><br>
+<div  class="container site-section">
+    <div class="row">
+      <div class="col-6 title-section">
+        <h2 class="heading">{{ publication.titrePub }}</h2>
+      </div>
+    </div>
+    <div class="row">
+       
+      <div class="col-lg">
+        <div class="custom-media d-flex">
+          <div class="img mr-4">
+            <img src="{{ asset('uploads/'~publication.imagePub) }}" alt="Image" class="img-fluid">
+          </div>
+          <div class="text">
+            <span class="meta">{{ publication.datePub ? publication.datePub|date('Y-m-d H:i:s') : '' }}</span>
+            
+            <h5 class="mb-4"><a href="#">Ecrit par: {{ publication.autheurPub }}</a></h5>
+            <p>{{ publication.contenuPub }}</p>
+            
+            <p>
+              {% set like = 0 %}
+              {% set dislike = 0 %}
+              
+              {% for ratee in publication.likes  %}
+                  {% if ratee.rate==1 %}
+                  {% set like = like+1 %}
+                  {% else %}
+                    {% set dislike = dislike+1 %}
+                  {% endif %}
+                  
+                              
+              {% endfor %}
+
+                <a href="{{ path('likepub1' , {'id': publication.id}) }}" title="Love it" class="btn btn-counter multiple-count" data-count={{like}}><span>&#x2764;</span> J'aime</a>
+                <a href="{{ path('dislike', {'id': publication.id}) }}"  title="Love it" class="btn btn-counter multiple-count" data-count={{dislike}}><span>&#128078;</span> J'aime pas</a>
+                              </p>
+          </div>
+        </div>
+        <a href="{{ path('Front_publications_index') }}" class=""> << Retour à la liste des blogs</a>
+      </div>
+      
+
+
+      
+     
+    </div>
+  </div>
+  <h1 style="color: white; margin-left:100px;margin-bottom:30px">{{publication.commantaires | length }} Commentaire(s) sur ce blog : </h1>
+  {% if publication.commantaires | length !=  0 %}
+  
+  <div class="widget-next-match" style="width: 80%; margin-left:100px">
+    <table class="table custom-table">
+      <thead>
+        <tr>
+          <th>Publie le :</th>
+          <th>Commentaire</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        
+        {% for c in publication.commantaires  %}
+        <tr>
+          
+          <td width="20%">{{ c.dateCommentaire ? c.dateCommentaire|date('Y-m-d') : '' }}</td>
+          <td width="80%"><strong class="text-white"> {{ c.contenu }}</strong></td>
+          
+        </tr>
+        {% endfor %}
+        {% endif %}
+       
+      </tbody>
+    </table>
+  </div>
+  
+     
+      
+
+      
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'base-front.html.twig' %}
+
+
+{% block body %}
+
+
+    <input  class="navbar-search" id="search" type=text value="" placeholder="type a name">
+
+    <div class="card-group">
+        <div class="flex-container">
+    <div class="card-body">
+
+
+        <div id="searchBody">
+
+        </div>
+        <div id="body1">
+            <div class="flex-container">
+            {% for equipe in equipes %}
+                {% if equipe.suspension==0  %}
+                <div class="card border-dark bg-danger mb-3" style="max-width: 21rem;justify-content: space-between">
+                    <div class="row-container">
+                    <div class="card-body pr-2" >
+                        <h3 style="color: black">Nom Equipe : {{ equipe.nom }}</h3>
+                        <div class="d-flex flex-column flex-lg-row">
+                            <h4 style="color: whitesmoke">Nombre des victoires: {{ equipe.nbrvic }} <br><br>
+                                Nombre des defaites: {{ equipe.nbrper }}
+                                <br><br>Nombre des nuls:{{ equipe.nbrnull }}<br><br>
+                            </h4><br>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+            <div class="mt-5">
+                {{ knp_pagination_render(equipes, 'pagination.html.twig') }}
+            </div>
+        </div>
+    </div>
+
+    </div>
+</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $("#search").keyup(function () {
+            var value = $("#search").val();
+
+            if (value === "") {
+                $('#searchBody').hide();
+                $('#body1').show();
+            } else {
+                $('#searchBody').show();
+                $('#body1').hide();
+            }
+
+            $.ajax({
+                    type: 'GET',
+                    url: 'equipe/recherche',
+                    data: {
+                        'valeur-recherche': value
+                    },
+                    success: function (retour) {
+                        if (retour) {
+                            $.each(JSON.parse(retour), function (i, obj) {
+                                var soc = obj.nom;
+                                console.log(soc);
+
+                                $('#searchBody').empty().append(
+                                    " <div class='card border-dark bg-danger mb-3' style='max-width: 21rem;'>" +
+                                    "               <div class='card-body pr-2'>" +
+                                    "                   <h3 style='color: black'>Nom Equipe : " + obj.nom + "</h3>" +
+                                    "                   <div  class='d-flex flex-column flex-lg-row'>" +
+                                    "                       <h4 style='color: whitesmoke'>Nombre des victoires: " + obj.nbr_vic + " <br><br>" +
+                                    "                            Nombre des defaites: " + obj.nbr_per + " " +
+                                    "                            <br><br>Nombre des nuls:" + obj.nbr_null + ".<br><br>" +
+                                    "                        </h4><br>" +
+                                    "                    </div>" +
+                                    "                </div>" +
+                                    "            </div>"
+                                );
+                                console.log("wsel");
+
+                            });
+                        }
+                    },
+                }
+            );
+        })
+    </script>
+{% endblock %}
+

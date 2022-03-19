@@ -1,0 +1,42 @@
+{% extends 'base-back.html.twig' %}
+
+{% block    body %}
+<a href="ajoutjoueurs"><button class="btn-success" style=" margin-left: auto;margin-top:  90px" type="submit"> Ajouter</button></a><br><br>
+
+<table style="border: #222222; margin-left:auto"class="table table-striped table-dark" border=" 20000000px" >
+
+    <tr>
+        <td>ID</td>
+        <td>Nom</td>
+        <td>Prenom</td>
+        <td>Email</td>
+        <td>Numero</td>
+        <td>Nombre de partie jouer</td>
+        <td>Equipe</td>
+
+        <td>Actions</td>
+
+    </tr>
+
+    {% for joueur in joueurs %}
+        <tr>
+            <td>{{ joueur.id }}</td>
+            <td>{{ joueur.nom }}</td>
+            <td>{{ joueur.prenom }}</td>
+            <td>{{ joueur.email }}</td>
+            <td> {{ joueur.numero }}</td>
+            <td> {{ joueur.nbrpartiejouer }}</td>
+            <td> {{ joueur.equipes }}</td>
+            <td> <a href="modifjoueurs/{{joueur.id}}">
+                    <input  class="btn-primary" type="submit" value="Modifier"/></a>
+             <a href="supprimerjoueur/{{joueur.id}}}">
+                    <input class="btn-danger" type="submit" value="supprimer"/></a>
+            </td>
+
+        </tr>
+    {% endfor %}
+
+
+</table>
+
+{% endblock %}

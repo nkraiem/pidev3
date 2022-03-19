@@ -1,0 +1,81 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1>Register</h1>
+
+        <table width="100%">
+    {{ form_start(registrationForm,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+            <tr>
+                <td>
+
+                    {{ form_label(registrationForm.email,"Email : ") }}
+                </td><td>
+                    {{ form_widget(registrationForm.email) }}
+                </td>
+                <td>{{ form_errors(registrationForm.email) }}</td>
+            </tr>
+
+            <tr>
+                <td>
+
+                    {{ form_label(registrationForm.plainPassword,"Password: ") }}
+                </td><td>
+                    {{ form_widget(registrationForm.plainPassword) }}
+                </td>
+                <td>{{ form_errors(registrationForm.plainPassword) }}</td>
+            </tr>
+            <tr>
+                <td>
+
+                    {{ form_label(registrationForm.name,"Name: ") }}
+                </td><td>
+                    {{ form_widget(registrationForm.name) }}
+                </td>
+                <td>{{ form_errors(registrationForm.name) }}</td>
+            </tr>
+            <tr>
+                <td>
+
+                    {{ form_label(registrationForm.lastname,"lastname: ") }}
+                </td><td>
+                    {{ form_widget(registrationForm.lastname) }}
+                </td>
+                <td>{{ form_errors(registrationForm.lastname) }}</td>
+            </tr>
+
+            <tr>
+                <td>
+
+                    {{ form_label(registrationForm.imageFile,"Image: ") }}
+                </td><td>
+                    {{ form_widget(registrationForm.imageFile) }}
+                </td>
+                <td>{{ form_errors(registrationForm.imageFile) }}</td>
+            </tr>
+            <tr>
+                <td>
+
+                    {{ form_label(registrationForm.agreeTerms,"agreeTerms: ") }}
+                </td><td>
+                    {{ form_widget(registrationForm.agreeTerms) }}
+                </td>
+                <td>{{ form_errors(registrationForm.agreeTerms) }}</td>
+            </tr>
+
+            <tr>
+                <td colspan="3">
+        <button type="submit" class="btn btn-block btn-outline-primary btn-lg">Register</button>
+                </td>
+            </tr>
+        </table>
+    {{ form_end(registrationForm) }}
+    <div class="nk-gap-2 d-none d-lg-block"></div>
+    <div class="nk-gap-2 d-none d-lg-block"></div>
+    <div class="nk-gap-2 d-none d-lg-block"></div>
+    </div>
+{% endblock %}

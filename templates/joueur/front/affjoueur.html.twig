@@ -1,0 +1,37 @@
+{% extends 'base-front.html.twig' %}
+
+{% block    body %}
+
+
+    <nav class="card-body" >
+
+
+
+        {% for joueur in joueurs %}
+            <div class="card border-dark bg-secondary mb-3" style="max-width: 21rem;">
+
+                <div class="card-body pr-2">
+
+                    <h3 style="color: #1c294e">Joueurs ID: {{ joueur.id }}</h3>
+                    <div class="d-flex flex-column flex-lg-row">
+                        <h4 style="color: whitesmoke">Nom: {{ joueur.nom }} &nbsp;&nbsp;
+                            Prenom: {{ joueur.prenom }}
+
+                            <br><br>Email:{{ joueur.email }}<br><br>
+                            Joueur N°: {{ joueur.numero }}
+                            <br><br>
+                            Nombre de partie Joués : {{ joueur.nbrpartiejouer }}
+                        </h4><br>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        {% endfor %}
+    </nav>
+
+
+{% endblock %}

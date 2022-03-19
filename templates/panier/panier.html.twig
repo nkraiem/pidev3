@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <!--
+    START: Shopping Cart
+
+    Additional Classes:
+    .nk-cart-light
+    -->
+    
+<div class="">
+    <div class="nk-gap-2"></div>
+    <div class="container" style="background-color: #0e0e0e">
+
+
+                <table class="table nk-store-cart-products">
+
+                    {% set total=0 %}
+
+                    {% for pp in pps %}
+
+                    <tr>
+                        <td class="nk-product-cart-thumb">
+                            <a href="#" class="nk-post-image">
+                                <img src="uploads/images/products/{{ pp.produit.image }}" alt="Image" class="nk-img" width="80" height="80">
+                            </a>
+                        </td>
+                        <td class="nk-product-cart-title">
+                            <h2 class="nk-post-title h5">
+                                <a href="#">{{pp.produit}}</a>
+                            </h2>
+                        </td>
+                        <td class="nk-product-cart-price">${{ pp.produit.prix }}</td>
+                        <td class="nk-product-cart-quantity">
+                            {{pp.contiter }}
+                        </td>
+                        {%  set x= ( pp.contiter*pp.produit.prix)%}
+                        <td class="nk-product-cart-total">
+                            ${{x}}
+                        </td>
+                        <td class="nk-product-cart-remove"><a href="{{ path('dpp',{'id':pp.id}) }}"><span class="ion-trash-b"></span></a></td>
+                    </tr>
+                    {% set total=(total+x) %}
+                    {% endfor %}
+
+
+                </table>
+
+
+            <div class="nk-gap-2"></div>
+            <div class="nk-cart-total">
+                <h1 style="text-align: center">Total <span>${{ total }}</span></h1>
+            </div>
+
+
+            <div class="nk-gap-3"></div>
+            <div class="nk-cart-btns" style="text-align: center">
+                <a href="{{ path('checkout',{'total':total}) }}" class="nk-btn nk-btn-lg nk-btn-color-main-1 link-effect-4">
+                    Go to Checkout
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{{ path('afficheStore')}}" class="nk-btn nk-btn-lg link-effect-4 " style="text-align: center">
+                    Continue Shopping
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="nk-gap-5"></div>
+    <div class="nk-gap-2 d-none d-lg-block"></div>
+    <div class="nk-gap-2 d-none d-lg-block"></div>
+    <div class="nk-gap-2 d-none d-lg-block"></div>
+    <div class="nk-gap-2 d-none d-lg-block"></div>
+<!-- END: Shopping Cart -->
+{% endblock %}

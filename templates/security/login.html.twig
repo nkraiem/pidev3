@@ -1,0 +1,65 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <div class="container">
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('smartlogout') }}">Logout</a>
+        </div>
+    {% endif %}
+    <div class="container">
+
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <table width="100%" >
+        <tr><td>
+    <label for="inputEmail">Email</label></td>
+            <td>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+            </td></tr>
+        <tr>
+            <td>
+                <label for="inputPassword">Password</label></td>
+            <td>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+            </td>
+        </tr>
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+
+    <td colspan="2" >
+    <button class="btn btn-block btn-outline-primary btn-lg" type="submit" style="width: 100%" >
+        Sign in
+
+
+    </button></td>
+</tr>
+        <tr><td colspan="2" >
+                <a href="{{path('connect_google')}}" class="btn btn-block btn-outline-primary btn-lg" style="width: 100%">continue with google</a></td></tr>
+    </table>
+</form>
+    </div>
+    </div>
+    <div class="nk-gap-2 d-none d-lg-block"></div>
+    <div class="nk-gap-2 d-none d-lg-block"></div>
+    <div class="nk-gap-2 d-none d-lg-block"></div>
+    <div class="nk-gap-2 d-none d-lg-block"></div>
+{% endblock %}

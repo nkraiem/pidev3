@@ -1,0 +1,35 @@
+{% extends 'base-front.html.twig' %}
+
+{% block body %}
+
+<div class="container site-section">
+    <div class="row">
+      <div class="col-6 title-section">
+        <h2 class="heading">Esprit FC Blog</h2>
+      </div>
+    </div>
+    <div class="row">
+        {% for publication in publications %}
+      <div class="col-lg-6">
+        <div style="margin-top:50px ;" class="custom-media d-flex">
+          <div class="img mr-4">
+            <img src="{{ asset('uploads/'~publication.imagePub) }}" alt="Image" class="img-fluid">
+          </div>
+          <div class="text">
+            <span class="meta">{{ publication.datePub ? publication.datePub|date('Y-m-d H:i:s') : '' }}</span>
+            <h3 class="mb-4"><a href="#">Ecrit par :  {{ publication.autheurPub }}</a></h3>
+            <h5 class="mb-4"><a href="#">{{ publication.titrePub }}</a></h5>
+            <p>{{ publication.contenuPub }}</p>
+            <p style="color: white;"><a  href="{{ path('Front_publications_show', {'id': publication.id}) }}" style="background-color:#ee1e46; border:none;" id="X" class="btn btn-primary"><span style="color: antiquewhite;">Voir plus</span> </a></p>
+            
+          
+          </div>
+        </div>
+      </div>
+
+
+      {% endfor %}
+     
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Matchs index{% endblock %}
+
+{% block body %}
+    <h1>Matchs index</h1>
+<input id="search" type=text value="" placeholder="Nom d'équipe">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateMatch</th>
+                <th>Equipe A</th>
+                <th>Equipe B</th> 
+                <th>RefMatch</th>
+                <th>ScoreA</th>
+                <th>ScoreB</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody id="body1">
+        {% for match in matchs %}
+            <tr>
+                <td>{{ match.id }}</td>
+                <td>{{ match.dateMatch|date('Y-m-d H:i:s') }}</td>
+                <td>{{ match.equipe1.nom }}</td>
+                <td>{{ match.equipe2.nom }}</td>
+                <td>{{ match.refMatch }}</td>
+                <td>{{ match.scoreA }}</td>
+                <td>{{ match.scoreB }}</td>
+                <td>
+                    <a href="{{ path('matchs_show', {'id': match.id}) }}">show</a>
+                    <a href="{{ path('matchs_edit', {'id': match.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tbody id="searchBody">
+
+         </tbody>
+    </table>
+
+    <a href="{{ path('matchs_new') }}">Create new</a>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $("#search").keyup(function () {
+            var value = $("#search").val();
+            if (value === "") {
+                $('#searchBody').hide();
+                $('#body1').show();
+            } else {
+                $('#searchBody').show();
+                $('#body1').hide();
+            }
+            $.ajax({
+                    type: 'GET',
+                    url: 'match/recherche',
+                    data: {
+                        'valeur-recherche': value
+                    },
+                    success: function (retour) {
+                        if (retour) {
+                            $('#searchBody').empty()
+                            $.each(JSON.parse(retour), function (i, obj) {
+                            $('#searchBody').append(
+                                    "<tr>" +
+                                    "    <td>" + obj.id + "</td>" +
+                                    "    <td>" + obj.date + "</td>" +
+                                    "    <td>" + obj.equipe1 + "</td>" +
+                                    "    <td>" + obj.equipe2 + "</td>" +
+                                    "    <td>" + obj.refMatch + "</td>" +
+                                    "    <td>" + obj.scoreA + "</td>" +
+                                     "    <td>" + obj.scoreB + "</td>" +
+                                    "        <td>" +
+                                    "                    <a href='matchs_show/" + obj.id +"'>show</a>"+
+                                    "                    <a href='matchs_edit/" + obj.id +"'>edit</a>"+
+                                    "        </td>" +
+                                    "    </tr>"
+                                );
+                                console.log("wsel");
+                            });
+                        }
+                    },
+                }
+            );
+        })
+    </script>
+{% endblock %}

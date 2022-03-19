@@ -1,0 +1,17 @@
+{% extends 'base-back.html.twig' %}
+{% block body %}
+<form  method="post">
+    <label for="nome">nom</label>
+    <input type="text" required id="nom" value={{ equipes.nom}} name="nom"><br>
+    <label for="nbrv">nbr vic</label>
+    <input type="text" required id="nbrvic" value={{ equipes.nbrvic}} name="nbrvic"><br>
+    <label for="nbrp">nbr perd</label>
+    <input type="text" id="nbrper" required value={{ equipes.nbrper}} name="nbrper"><br>
+    <label for="nbrn">nbr null</label>
+    <input type="text" id="nbrnull" value={{ equipes.nbrnull}} required name="nbrnull"><br>
+    <input type="submit" class="btn-success" value="submit">&nbsp;<a href="equipes"><button class="btn-primary"  type="submit"> Retour</button></a><br><br>
+
+
+</form>
+
+{% endblock %}

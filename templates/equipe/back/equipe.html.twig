@@ -1,0 +1,44 @@
+{% extends 'base-back.html.twig' %}
+
+
+{% block body %}
+<a href="ajoutequipes"><button class="btn-success"  style=" margin-left: auto;margin-top:  90px" type="submit"> Ajouter</button></a><br><br>
+    <a href="{{ path('statsequipe')}}">statistique</a><br>
+
+    <table style="border: #222222; margin-left:auto"class="table table-striped table-dark" border=" 20000000px" >
+
+    <tr>
+        <td>ID</td>
+        <td>Nom</td>
+        <td>nbr vic</td>
+        <td>nbr defaite</td>
+        <td>nbr nul</td>
+        <td>Statut</td>
+        <td>Actions</td>
+
+    </tr>
+
+{% for equipe in equipes %}
+    <tr>
+        <td>{{ equipe.id }}</td>
+        <td>{{ equipe.nom }}</td>
+        <td>{{ equipe.nbrvic }}</td>
+        <td>{{ equipe.nbrper }}</td>
+        <td> {{ equipe.nbrnull }}</td>
+        <td> {% if equipe.suspension == 1 %} Suspendue
+            {% else %} Actif{% endif %}</td>
+        <td>  <a href="modifequipes/{{equipe.id}}">
+                <input class="btn-primary" type="submit" value="Modifier"/></a>
+            <a href="supprimerequipe/{{equipe.id}}}">
+                <input class="btn-danger" type="submit" value="supprimer"/></a>
+            {% if equipe.suspension == 1 %} <a href="{{ path ('suspendre_equipe', {'id' : equipe.id})}}" class="btn btn-success text-white" href="#">Activer</a>
+            {% else %}<a href="{{ path ('actif_equipe', {'id' : equipe.id})}}" class="btn btn-success text-white" href="#">Suspender</a> {% endif %}
+        </td>
+
+    </tr>
+{% endfor %}
+
+
+</table>
+
+{% endblock %}

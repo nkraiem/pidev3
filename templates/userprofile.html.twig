@@ -1,0 +1,399 @@
+{% extends 'base-front.html.twig' %}
+{% block title %}
+    user profile
+{% endblock %}
+{%block css  %}
+   <!--<link rel="stylesheet" href="{{asset('assets/css/profile/bootstrap.min.css')}}">-->
+    <link rel="stylesheet" href="{{asset('assets/css/profile/fontawesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/profile/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/profile/nice-select.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/profile/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/profile/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/profile/animate.css')}}">
+
+{% endblock %}
+{%block home%} {% endblock%}
+{% block landing %} {% endblock %}
+{% block tournament%}{% endblock%}
+{% block pro%}{% endblock%}
+{% block blog%}{% endblock %}
+{% block store%}{% endblock %}
+{% block body %}
+    <div class="nk-main">
+
+
+        <!-- START: Header Title -->
+        <!--
+            Additional Classes:
+                .nk-header-title-sm
+                .nk-header-title-md
+                .nk-header-title-lg
+                .nk-header-title-xl
+                .nk-header-title-full
+                .nk-header-title-parallax
+                .nk-header-title-parallax-opacity
+                .nk-header-title-boxed
+        -->
+        <div class="nk-header-title nk-header-title-sm nk-header-title-parallax nk-header-title-parallax-opacity">
+            <div class="bg-image op-5">
+                <img src="assets/images/image-5.jpg" alt="" class="jarallax-img">
+            </div>
+            <div class="nk-header-table">
+                <div class="nk-header-table-cell">
+                    <div class="container">
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- END: Header Title -->
+<div class="container">
+    <div class="nk-social-profile nk-social-profile-container-offset">
+        <div class="row">
+            <div class="col-md-5 col-lg-3">
+                <div class="nk-social-profile-avatar">
+                    <a href="#">
+                        {% block imageprofile %}<img  src="assets/images/avatar-1.jpg" alt="nK"  >{% endblock %}
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-7 col-lg-9">
+                <div class="nk-social-profile-info">
+                    <div class="nk-gap-2"></div>
+                    <div class="nk-social-profile-info-last-seen">last seen 2 hours ago</div>
+                    <h1 class="nk-social-profile-info-name">{% block name %}saif{% endblock %}</h1>
+                    <div class="nk-social-profile-info-username">@{% block uname %}saif{% endblock %}</div>
+                    <div class="nk-social-profile-info-actions">
+                        <a href="#" class="nk-btn link-effect-4">Add Friends</a>
+                        <a href="{{path('testvideo')}}" class="nk-btn link-effect-4">go live</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="nk-gap-2 d-none d-lg-block"></div>
+    <div class="nk-gap-2 d-none d-lg-block"></div>
+    <div class="nk-gap-2 d-none d-lg-block"></div>
+    <div class="nk-gap-2 d-none d-lg-block"></div>
+    <section id="all-trophies" class="pb-120">
+        <div class="container">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="overview-tab">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="single-trophies d-flex align-items-center">
+                                    <div class="left d-flex align-items-center justify-content-center">
+                                        <img src="{{asset('assets/images/profile-image/trophies-icon-1.png')}}" alt="image">
+                                    </div>
+                                    <div class="right">
+                                        <p class="text-sm">Elite Trophies</p>
+                                        <h4>{% block Et %}0{% endblock %}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="single-trophies d-flex align-items-center">
+                                    <div class="left d-flex align-items-center justify-content-center">
+                                        <img src="{{asset('assets/images/profile-image/trophies-icon-2.png')}}" alt="image">
+                                    </div>
+                                    <div class="right">
+                                        <p class="text-sm">gold-trophy</p>
+                                        <h4>{% block EG %}0{% endblock %}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="single-trophies d-flex align-items-center">
+                                    <div class="left d-flex align-items-center justify-content-center">
+                                        <img src="{{asset('assets/images/profile-image/trophies-icon-3.png')}}" alt="image">
+                                    </div>
+                                    <div class="right">
+                                        <p class="text-sm">silver trophy</p>
+                                        <h4>{% block ES %}0{% endblock %}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="single-trophies d-flex align-items-center">
+                                    <div class="left d-flex align-items-center justify-content-center">
+                                        <img src="{{asset('assets/images/profile-image/trophies-icon-4.png')}}" alt="image">
+                                    </div>
+                                    <div class="right">
+                                        <p class="text-sm">Bronze Trophies</p>
+                                        <h4>{% block EB %}0{% endblock %}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="statistics-area">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <div class="total-area">
+                                        <div class="head-area d-flex justify-content-between">
+                                            <div class="left">
+                                                <h5>Game Statistics</h5>
+                                                <p class="text-sm">Player's game specific statistics</p>
+                                            </div>
+                                            <div class="right">
+                                                <p class="text-sm">Last Update: <span>3 days ago</span></p>
+                                            </div>
+                                        </div>
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="fortnite-tab" data-toggle="tab" href="#fortnite" role="tab" aria-controls="fortnite" aria-selected="true">fortnite</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="warzone-tab" data-toggle="tab" href="#warzone" role="tab" aria-controls="warzone" aria-selected="false">warzone</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="lofl-tab" data-toggle="tab" href="#lofl" role="tab" aria-controls="lofl" aria-selected="false">lofl</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="dota-tab" data-toggle="tab" href="#dota" role="tab" aria-controls="dota" aria-selected="false">dota</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContents">
+                                            <div class="tab-pane fade show active" id="fortnite" role="tabpanel" aria-labelledby="fortnite-tab">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-6">
+                                                        <div class="single-item text-center">
+                                                            <img src="{{asset('assets/images/profile-image/statistics-icon-1.png')}}" alt="image">
+                                                            <p>Tournaments Entered</p>
+                                                            <h4>10</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-6">
+                                                        <div class="single-item text-center">
+                                                            <img src="{{asset('assets/images/profile-image/statistics-icon-2.png')}}" alt="image">
+                                                            <p>Kills Per Game (Average)</p>
+                                                            <h4>20</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-6">
+                                                        <div class="single-item text-center">
+                                                            <img src="{{asset('assets/images/profile-image/statistics-icon-3.png')}}" alt="image">
+                                                            <p>Games Played League of Legends</p>
+                                                            <h4>5</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-6">
+                                                        <div class="single-item text-center">
+                                                            <img src="{{asset('assets/images/profile-image/statistics-icon-4.png')}}" alt="image">
+                                                            <p>Earnings (Per tournament)</p>
+                                                            <h4>0</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="warzone" role="tabpanel" aria-labelledby="warzone-tab">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-6">
+                                                        <div class="single-item text-center">
+                                                            <img src="{{asset('assets/images/profile-image/statistics-icon-1.png')}}" alt="image">
+                                                            <p>Tournaments Entered</p>
+                                                            <h4>10</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-6">
+                                                        <div class="single-item text-center">
+                                                            <img src="{{asset('assets/images/profile-image/statistics-icon-2.png')}}" alt="image">
+                                                            <p>Kills Per Game (Average)</p>
+                                                            <h4>20</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-6">
+                                                        <div class="single-item text-center">
+                                                            <img src="{{asset('assets/images/profile-image/statistics-icon-3.png')}}" alt="image">
+                                                            <p>Games Played League of Legends</p>
+                                                            <h4>5</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-6">
+                                                        <div class="single-item text-center">
+                                                            <img src="{{asset('assets/images/profile-image/statistics-icon-4.png')}}" alt="image">
+                                                            <p>Earnings (Per tournament)</p>
+                                                            <h4>0</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="lofl" role="tabpanel" aria-labelledby="lofl-tab">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-6">
+                                                        <div class="single-item text-center">
+                                                            <img src="{{asset('assets/images/profile-image/statistics-icon-1.png')}}" alt="image">
+                                                            <p>Tournaments Entered</p>
+                                                            <h4>10</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-6">
+                                                        <div class="single-item text-center">
+                                                            <img src="{{asset('assets/images/profile-image/statistics-icon-2.png')}}" alt="image">
+                                                            <p>Kills Per Game (Average)</p>
+                                                            <h4>20</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-6">
+                                                        <div class="single-item text-center">
+                                                            <img src="{{asset('assets/images/profile-image/statistics-icon-3.png')}}" alt="image">
+                                                            <p>Games Played League of Legends</p>
+                                                            <h4>5</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-6">
+                                                        <div class="single-item text-center">
+                                                            <img src="{{asset('assets/images/profile-image/statistics-icon-4.png')}}" alt="image">
+                                                            <p>Earnings (Per tournament)</p>
+                                                            <h4>0</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="dota" role="tabpanel" aria-labelledby="dota-tab">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-6">
+                                                        <div class="single-item text-center">
+                                                            <img src="{{asset('assets/images/profile-image/statistics-icon-1.png')}}" alt="image">
+                                                            <p>Tournaments Entered</p>
+                                                            <h4>10</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-6">
+                                                        <div class="single-item text-center">
+                                                            <img src="{{asset('assets/images/profile-image/statistics-icon-2.png')}}" alt="image">
+                                                            <p>Kills Per Game (Average)</p>
+                                                            <h4>20</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-6">
+                                                        <div class="single-item text-center">
+                                                            <img src="{{asset('assets/images/profile-image/statistics-icon-3.png')}}" alt="image">
+                                                            <p>Games Played League of Legends</p>
+                                                            <h4>5</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-6">
+                                                        <div class="single-item text-center">
+                                                            <img src="{{asset('assets/images/profile-image/statistics-icon-4.png')}}" alt="image">
+                                                            <p>Earnings (Per tournament)</p>
+                                                            <h4>0</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tournaments-slider">
+                                        <div class="top-area">
+                                            <h5>Active Tournaments</h5>
+                                            <p class="text-sm">Tournaments I'm playing now</p>
+                                        </div>
+                                        <div class="tournaments-slide slick-initialized slick-slider"><div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 3450px; transform: translate3d(-1035px, 0px, 0px);"><div class="slick-slide slick-cloned" data-slick-index="-2" id="" aria-hidden="true" tabindex="-1" style="width: 345px;"><div><div class="single-slide" style="width: 100%; display: inline-block;">
+                                                                <a href="tournaments-single.html" tabindex="-1"><img src="{{asset('assets/images/profile-image/tournaments-slide-3.png')}}" alt="Image"></a>
+                                                            </div></div></div><div class="slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" tabindex="-1" style="width: 345px;"><div><div class="single-slide" style="width: 100%; display: inline-block;">
+                                                                <a href="tournaments-single.html" tabindex="-1"><img src="{{asset('assets/images/profile-image/tournaments-slide-2.png')}}" alt="Image"></a>
+                                                            </div></div></div><div class="slick-slide" data-slick-index="0" aria-hidden="true" style="width: 345px;" tabindex="-1"><div><div class="single-slide" style="width: 100%; display: inline-block;">
+                                                                <a href="tournaments-single.html" tabindex="-1"><img src="{{asset('assets/images/profile-image/tournaments-slide-1.png')}}" alt="Image"></a>
+                                                            </div></div></div><div class="slick-slide slick-current slick-active" data-slick-index="1" aria-hidden="false" style="width: 345px;"><div><div class="single-slide" style="width: 100%; display: inline-block;">
+                                                                <a href="tournaments-single.html" tabindex="0"><img src="{{asset('assets/images/profile-image/tournaments-slide-2.png')}}" alt="Image"></a>
+                                                            </div></div></div><div class="slick-slide slick-active" data-slick-index="2" aria-hidden="false" style="width: 345px;"><div><div class="single-slide" style="width: 100%; display: inline-block;">
+                                                                <a href="tournaments-single.html" tabindex="0"><img src="{{asset('assets/images/profile-image/tournaments-slide-3.png')}}" alt="Image"></a>
+                                                            </div></div></div><div class="slick-slide" data-slick-index="3" aria-hidden="true" style="width: 345px;" tabindex="-1"><div><div class="single-slide" style="width: 100%; display: inline-block;">
+                                                                <a href="tournaments-single.html" tabindex="-1"><img src="{{asset('assets/images/profile-image/tournaments-slide-2.png')}}" alt="Image"></a>
+                                                            </div></div></div><div class="slick-slide slick-cloned" data-slick-index="4" id="" aria-hidden="true" tabindex="-1" style="width: 345px;"><div><div class="single-slide" style="width: 100%; display: inline-block;">
+                                                                <a href="tournaments-single.html" tabindex="-1"><img src="{{asset('assets/images/profile-image/tournaments-slide-1.png')}}" alt="Image"></a>
+                                                            </div></div></div><div class="slick-slide slick-cloned" data-slick-index="5" id="" aria-hidden="true" tabindex="-1" style="width: 345px;"><div><div class="single-slide" style="width: 100%; display: inline-block;">
+                                                                <a href="tournaments-single.html" tabindex="-1"><img src="{{asset('assets/images/profile-image/tournaments-slide-2.png')}}" alt="Image"></a>
+                                                            </div></div></div><div class="slick-slide slick-cloned" data-slick-index="6" id="" aria-hidden="true" tabindex="-1" style="width: 345px;"><div><div class="single-slide" style="width: 100%; display: inline-block;">
+                                                                <a href="tournaments-single.html" tabindex="-1"><img src="{{asset('assets/images/profile-image/tournaments-slide-3.png')}}" alt="Image"></a>
+                                                            </div></div></div><div class="slick-slide slick-cloned" data-slick-index="7" id="" aria-hidden="true" tabindex="-1" style="width: 345px;"><div><div class="single-slide" style="width: 100%; display: inline-block;">
+                                                                <a href="tournaments-single.html" tabindex="-1"><img src="{{asset('assets/images/profile-image/tournaments-slide-2.png')}}" alt="Image"></a>
+                                                            </div></div></div></div></div></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="sidebar-area">
+                                        <div class="title-area">
+                                            <h5>My Statistics</h5>
+                                            <p class="text-sm">My Current progress</p>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <span><img src="{{asset('assets/images/profile-image/my-statistics-icon-1.png')}}" alt="image">Rank</span>
+                                                <span>5</span>
+                                            </li>
+                                            <li>
+                                                <span><img src="{{asset('assets/images/profile-image/my-statistics-icon-2.png')}}" alt="image">Tournaments Played</span>
+                                                <span>{% block tT %}1193{% endblock %}</span>
+                                            </li>
+
+                                            <li>
+                                                <span><img src="{{asset('assets/images/profile-image/my-statistics-icon-4.png')}}" alt="image">Times Paid</span>
+                                                <span>10</span>
+                                            </li>
+                                            <li>
+                                                <span><img src="{{asset('assets/images/profile-image/my-statistics-icon-5.png')}}" alt="image">Tournaments Won</span>
+                                                <span>{% block tG %}02{% endblock %}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="sidebar-area">
+                                        <div class="title-area">
+                                            <h5>Earnings</h5>
+                                            <p class="text-sm">My current earnings</p>
+                                        </div>
+                                        <div class="parents-area">
+                                            <div class="single-area d-flex align-items-center">
+                                                <div class="img-area d-flex align-items-center justify-content-center">
+                                                    <img src="{{asset('assets/images/profile-image/earnings-icon-1.png')}}" alt="image">
+                                                </div>
+                                                <div class="right-area">
+                                                    <span><img src="{{asset('assets/images/profile-image/coin-icon.png')}}" alt="image">0</span>
+                                                    <p class="text-sm">Total Coins Earned</p>
+                                                </div>
+                                            </div>
+                                            <div class="single-area d-flex align-items-center">
+                                                <div class="img-area mid d-flex align-items-center justify-content-center">
+                                                    <img src="{{asset('assets/images/profile-image/earnings-icon-2.png')}}" alt="image">
+                                                </div>
+                                                <div class="right-area">
+                                                    <span><img src="{{asset('assets/images/profile-image/coin-icon.png')}}" alt="image">0</span>
+                                                    <p class="text-sm">Average Entry Fee</p>
+                                                </div>
+                                            </div>
+                                            <div class="single-area d-flex align-items-center">
+                                                <div class="img-area last d-flex align-items-center justify-content-center">
+                                                    <img src="{{asset('assets/images/profile-image/earnings-icon-3.png')}}" alt="image">
+                                                </div>
+                                                <div class="right-area">
+                                                    <span><img src="{{asset('assets/images/profile-image/coin-icon.png')}}" alt="image">0</span>
+                                                    <p class="text-sm">Total Coins Earned</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    </div>
+    </section>
+</div>
+
+    </div>
+    </section>
+    <div class="nk-gap-4"></div>
+    <div class="nk-gap-3"></div>
+</div>
+{% endblock %}
+    {% block script %}
+    {% endblock %}

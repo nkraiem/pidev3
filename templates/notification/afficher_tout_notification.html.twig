@@ -1,0 +1,44 @@
+<a class="nav-link dropdown-toggle" href="{{ asset('#') }}" id="alertsDropdown"
+       role="button"
+       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-bell fa-fw"></i>
+        <!-- Counter - Alerts -->
+        {% if matchs|length > 0 %}
+            <span class="badge badge-danger badge-counter">{{ matchs|length }}</span>
+        {% endif %}
+    </a>
+    <!-- Dropdown - Alerts -->
+    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+         style="overflow-x: hidden; overflow-y: auto; max-height: 59vh;" aria-labelledby="alertsDropdown">
+        <h6 class="dropdown-header">
+            matchs
+        </h6>
+        {% if matchs|length > 0 %}
+            {% for match in matchs %}
+                <a class="dropdown-item d-flex align-items-center">
+                    <div class="mr-3">
+                        <div class="icon-circle bg-primary">
+                                <i class="fas fa-biking text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                <td>{{ match.equipe1.nom }}</td>
+                <td>{{ match.scoreA }}</td>
+
+                <td>{{ match.equipe2.nom }}</td>
+                <td>{{ match.scoreB }}</td>
+                <td>
+                        <div class="small text-gray-700">{{  match.dateMatch|date('Y-m-d H:i:s')  }}</div>
+                        <span class="font-weight-bold">
+                            Match terminé
+                        </span>
+                    </div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <p class="dropdown-item d-flex align-items-center">
+                Aucune match
+            </p>
+        {% endif %}
+    </div>
+</li>
